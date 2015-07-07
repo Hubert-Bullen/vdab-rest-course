@@ -16,10 +16,13 @@ public class CarModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private String name;
+
     @ManyToOne
     private Make make;
 
-    @OneToMany
+    @OneToMany(mappedBy = "model")
+    @JsonIgnore
     private List<Car> cars;
 
     @Enumerated(value = EnumType.STRING)
@@ -27,7 +30,8 @@ public class CarModel {
 
     private int pk;
 
-    public CarModel(Make make, List<Car> cars, CarEngine engine, int pk) {
+    public CarModel(String name, Make make, List<Car> cars, CarEngine engine, int pk) {
+        this.name = name;
         this.make = make;
         this.cars = cars;
         this.engine = engine;
@@ -67,5 +71,21 @@ public class CarModel {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

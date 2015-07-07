@@ -43,4 +43,8 @@ public class Car {
     public void setModel(CarModel model) {
         this.model = model;
     }
+
+    public int getId() {
+        return id;
+    }
 }

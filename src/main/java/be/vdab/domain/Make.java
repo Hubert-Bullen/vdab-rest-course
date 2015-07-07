@@ -1,5 +1,7 @@
 package be.vdab.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,7 +19,8 @@ public class Make {
     @Enumerated(EnumType.STRING)
     private Brand brand;
 
-   @OneToMany
+    @OneToMany(mappedBy = "make")
+    @JsonIgnore
     private List<CarModel> models;
 
 
@@ -45,5 +48,13 @@ public class Make {
 
     public void setModels(List<CarModel> models) {
         this.models = models;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

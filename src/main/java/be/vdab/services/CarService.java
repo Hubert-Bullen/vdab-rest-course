@@ -7,8 +7,13 @@ import be.vdab.repositories.CarRepository;
 import be.vdab.repositories.MakeRepository;
 import be.vdab.repositories.ModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -48,11 +53,25 @@ public class CarService {
         return makeRepository.findAll();
     }
 
-/*    @RequestMapping(value = "/{carId}" ,method = RequestMethod.POST)
-    public void createCar(@RequestBody Car c){
-        c = new Car("987-02");
+    @RequestMapping(value = "/create" ,method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE) // .GET is de default!
+    public ResponseEntity<Void> createCar(@RequestBody Car c){
         carRepository.save(c);
-    }*/
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", "http://localhost:8080/car/" + c.getId());
+        ResponseEntity<Void> response = new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+        return response;
+    }
+
+    @RequestMapping(value = "/{carId}", method = RequestMethod.DELETE)
+    public void removeById(@PathVariable("carId") int id){
+        carRepository.delete(id);
+    }
+
+    // Laatste 2 moeten gedaan worden via een extar tool omdat een delete en create niet gedaan kunnen worden via de browser.
+    // in deze tool de http method aan passen, header bijvoegen met contenttype en wat we dus verwachten. en dan bij de body links text invoege in de stijl van het content-type.
+    // Als we in json dan een object wilel zetten bij het createen (dus een modal bij car) kunnen we gewoon de id meegeven.
+
+
 
 
 

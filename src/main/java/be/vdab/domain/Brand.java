@@ -6,4 +6,5 @@ package be.vdab.domain;
 public enum Brand {
 
     AUDI, BMW, MERCEDES, VOLKSWAGEN, HYUNDAI, MITSUBISHI
+
 }
