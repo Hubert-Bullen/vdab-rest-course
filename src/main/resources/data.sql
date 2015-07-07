@@ -6,6 +6,6 @@ INSERT INTO car_model(engine, pk) VALUES ('BIO', 140);
 INSERT INTO car_model(engine, pk) VALUES ('HYBRID', 120);
 INSERT INTO car_model(engine, pk) VALUES ('DIESEL', 135);
 
-INSERT INTO make(brand) VALUES ('BMW');
-INSERT INTO make(brand) VALUES ('AUDI');
-INSERT INTO make(brand) VALUES ('MERCEDES');
+INSERT INTO car_make(brand) VALUES ('BMW');
+INSERT INTO car_make(brand) VALUES ('AUDI');
+INSERT INTO car_make(brand) VALUES ('MERCEDES');

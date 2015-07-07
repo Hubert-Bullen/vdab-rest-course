@@ -8,7 +8,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-
 import javax.sql.DataSource;
 
 /**
@@ -35,7 +34,7 @@ public class Main {
         jpaVendorAdapter.setShowSql(true);
         jpaVendorAdapter.setGenerateDdl(true);
         return jpaVendorAdapter;
-    Beide beans niet meer nodig door applications.properties!
+    !!!!!Beide beans niet meer nodig door applications.properties!!!!!
     }*/
 
 }

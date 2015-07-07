@@ -17,11 +17,11 @@ public class Car {
 
     private String licensePlate;
 
-    @Transient
+    @ManyToOne
     private CarModel model;
 
-
-    public Car(String licensePlate) {
+    public Car(CarModel model, String licensePlate) {
+        this.model = model;
         this.licensePlate = licensePlate;
     }
 
@@ -36,7 +36,6 @@ public class Car {
         this.licensePlate = licensePlate;
     }
 
-    @JsonIgnore
     public CarModel getModel() {
         return model;
     }

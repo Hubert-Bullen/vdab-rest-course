@@ -3,6 +3,7 @@ package be.vdab.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Hyuberuto on 07/07/15.
@@ -15,16 +16,20 @@ public class CarModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Transient
+    @ManyToOne
     private Make make;
+
+    @OneToMany
+    private List<Car> cars;
 
     @Enumerated(value = EnumType.STRING)
     private CarEngine engine;
 
     private int pk;
 
-    public CarModel(Make make, CarEngine engine, int pk) {
+    public CarModel(Make make, List<Car> cars, CarEngine engine, int pk) {
         this.make = make;
+        this.cars = cars;
         this.engine = engine;
         this.pk = pk;
     }
@@ -32,7 +37,6 @@ public class CarModel {
     public CarModel() {
     }
 
-    @JsonIgnore
     public Make getMake() {
         return make;
     }
@@ -55,5 +59,13 @@ public class CarModel {
 
     public void setPk(int pk) {
         this.pk = pk;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
 }
