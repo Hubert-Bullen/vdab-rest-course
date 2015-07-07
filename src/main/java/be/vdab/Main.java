@@ -23,17 +23,19 @@ public class Main {
 
     }
 
-    @Bean
+    /* @Bean
     public DataSource dataSource(){
         return new DriverManagerDataSource("jdbc:mysql://localhost:3306/cars", "root","");
     }
 
-    @Bean
+   @Bean
     public JpaVendorAdapter jpaVendorAdapter(){
         HibernateJpaVendorAdapter jpaVendorAdapter=new HibernateJpaVendorAdapter();
         jpaVendorAdapter.setDatabase(Database.MYSQL);
         jpaVendorAdapter.setShowSql(true);
         jpaVendorAdapter.setGenerateDdl(true);
         return jpaVendorAdapter;
-    }
+    Beide beans niet meer nodig door applications.properties!
+    }*/
+
 }
